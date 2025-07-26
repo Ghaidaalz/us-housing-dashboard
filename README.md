@@ -1,87 +1,77 @@
-🏠 US Housing Dashboard
+# House Price Dashboard
 
-An interactive Streamlit application to explore residential property data in the Seattle area.
-📌 Overview
+## 🏠 Project Overview
 
-This tool allows users to:
+This project is an interactive data visualization dashboard built using Streamlit to explore and analyze real estate housing prices in Australia. It offers users a clear understanding of the housing market through intuitive visuals, filtering tools, and structured storytelling.
 
-    Navigate and understand a dataset of 4,000+ housing records
+## 🎯 Objectives
 
-    Visualize property features across cities
+- Introduce the dataset and context behind Australian house pricing.
+- Provide a user-friendly interface for exploring housing data.
+- Enable dynamic visual exploration: trends, distributions, and maps.
+- Support decision-making for buyers, sellers, and analysts with city-wise insights.
 
-    Interactively filter listings based on price, size, bedrooms, and more
+## 📊 Features
 
-Built using Streamlit, the app features a clean, storytelling-style introduction and a dedicated dashboard interface.
-🗂️ Features
+- Storytelling-based introduction to the real estate market.
+- Interactive map showing average house prices by city.
+- Filtering options by bedrooms, bathrooms, and more.
+- Charts for distribution and trend analysis.
+- Clean, minimal UI using Streamlit and Plotly.
 
-    Storytelling landing page with introduction and objectives
+## 🧰 Tech Stack
 
-    Dynamic dashboard:
+- Python
+- Streamlit
+- Pandas, NumPy
+- Plotly / Altair / Matplotlib
+- Scikit-learn (for preprocessing)
+- GitHub (version control)
 
-        Filter properties by key attributes
+## 🗂️ Project Structure
 
-        Visualize average prices by city on a map
+├── data/
+│ └── houses.csv
+├── pages/
+│ ├── 1_Introduction.py
+│ ├── 2_Dashboard.py
+├── utils/
+│ └── preprocessing.py
+├── app.py
+├── requirements.txt
+└── README.md
 
-        Explore distributions and correlations
 
-    Modular and scalable codebase
+## 🚀 Getting Started
 
-    Ready for deployment (locally or on the cloud)
+1. Clone the repository:
 
-🚀 Getting Started
-🔧 Prerequisites
-
-    Python 3.8+
+```bash
+git clone https://github.com/your-username/house-price-dashboard.git
+cd house-price-dashboard
 
     Install dependencies:
 
 pip install -r requirements.txt
 
-▶️ Run the App
+    Run the Streamlit app:
 
 streamlit run app.py
 
-The dashboard will be accessible at http://localhost:8501.
-📁 Project Structure
+📌 Dataset
 
-us-housing-dashboard/
-├── app.py                  # Landing page (storytelling + objectives)
-├── pages/
-│   └── 1_Dashboard.py      # Main dashboard
-├── data/
-│   └── housing.csv         # Raw dataset
-├── models/                 # (optional) Trained models or scripts
-├── utils/                  # Helper functions and pipelines
-├── requirements.txt
-└── README.md
+The dataset contains information on real estate listings in Australia, including attributes such as:
 
-📊 Data Description
+    Bedrooms, Bathrooms, Sqft, Lot Size
 
-The dataset includes the following features:
+    Year Built, Renovated, View, City, Zipcode
 
-    Price (target): Sale price in USD
+    Price (target variable)
 
-    Bedrooms / Bathrooms
-
-    Sqft Living / Lot
-
-    Floors, Waterfront, View, Condition
-
-    Construction & Renovation Dates
-
-    City, Statezip
-
-📌 Notes
-
-    The app currently does not include prediction models.
-
-    All insights are based on exploratory data analysis and interactive visualizations.
-
-📃 License
+📎 License
 
 This project is licensed under the MIT License.
-🙌 Acknowledgements
 
-    Streamlit
 
-    Housing dataset from the Seattle metro area
+Let me know if you'd like this saved to a file or if you want a matching requirements.txt generated!
+
