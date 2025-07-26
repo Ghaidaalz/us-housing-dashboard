@@ -43,6 +43,7 @@ streamlit run app.py
 The dashboard will be accessible at http://localhost:8501
 
 📁 Project Structure
+```bash
 us-housing-dashboard/
 ├── app.py                  # Landing page (storytelling + objectives)
 ├── pages/
@@ -53,3 +54,25 @@ us-housing-dashboard/
 ├── utils/                  # Helper functions and pipelines
 ├── requirements.txt
 └── README.md
+```
+📊 Data Description
+
+The dataset includes the following features:
+
+    Price (target): Sale price in USD
+
+    Bedrooms / Bathrooms
+
+    Sqft Living / Lot
+
+    Floors, Waterfront, View, Condition
+
+    Construction & Renovation Dates
+
+    City, Statezip
+
+📌 Notes
+
+    The app currently does not include prediction models.
+
+    All insights are based on exploratory data analysis and interactive visualizations.
