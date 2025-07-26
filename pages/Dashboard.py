@@ -14,9 +14,10 @@ import viz.renovation as v_reno
 import viz.build_year as v_build
 
 # ───────────────────── Config ─────────────────────
-DATA_PATH = pathlib.Path("data/USA_Housing_Dataset.csv")
+DATA_PATH = pathlib.Path("data/cleaned_housing_data.csv")
+
 st.set_page_config(page_title="Housing Market Dashboard", layout="wide")
-st.title("🏠 Housing Market Dashboard")
+st.title(" Housing Market Dashboard")
 
 # ───────────────────── Load data ─────────────────────
 df = loader.load(DATA_PATH)
@@ -31,7 +32,7 @@ price_range = st.sidebar.slider("Price (USD)", price_min, price_max,
 bed_min, bed_max = int(df.bedrooms.min()), int(df.bedrooms.max())
 bedrooms = st.sidebar.slider("Bedrooms", bed_min, bed_max, (bed_min, bed_max))
 
-bath_min, bath_max = float(df.bathrooms.min()), float(df.bathrooms.max())
+bath_min, bath_max = int(df.bathrooms.min()), int(df.bathrooms.max())
 bathrooms = st.sidebar.slider("Bathrooms", bath_min, bath_max, (bath_min, bath_max))
 
 year_min, year_max = int(df.yr_built.min()), int(df.yr_built.max())
@@ -58,9 +59,28 @@ col4.metric("Avg Price per Sqft", f"${avg_price_per_sqft:,.2f}")
 
 
 # ───────────────────── Detailed stats ─────────────────────
-st.header("Detailed Summary Statistics")
-st.dataframe(stats.detailed(filtered_df))
+# Generate the detailed stats
+detailed_summary = stats.detailed(filtered_df)
 
+# Function to format large numbers
+def format_large_number(x):
+    try:
+        x = float(x)
+        if x >= 1_000_000:
+            return f"{x / 1_000_000:.1f}M"
+        elif x >= 1_000:
+            return f"{x / 1_000:.1f}K"
+        else:
+            return round(x, 2)
+    except:
+        return x
+
+# Apply formatting (optional: only to numeric columns)
+formatted_summary = detailed_summary.applymap(format_large_number)
+
+# Show in Streamlit
+st.header("Detailed Summary Statistics")
+st.dataframe(formatted_summary)
 # ───────────────────── Visualisations ─────────────────────
 st.header("Visualisations")
 st.plotly_chart(v_city.houses_per_city(filtered_df), use_container_width=True)
