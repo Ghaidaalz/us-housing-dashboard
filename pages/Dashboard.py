@@ -59,8 +59,10 @@ col4.metric("Avg Price per Sqft", f"${avg_price_per_sqft:,.2f}")
 
 
 # ───────────────────── Detailed stats ─────────────────────
-# Generate the detailed stats
-detailed_summary = stats.detailed(filtered_df)
+# Generate the detailed stats, excluding 'yr_built' and 'yr_renovated'
+columns_to_exclude = ['yr_built', 'yr_renovated']
+filtered_numeric_df = filtered_df.drop(columns=columns_to_exclude, errors='ignore')
+detailed_summary = stats.detailed(filtered_numeric_df)
 
 # Function to format large numbers
 def format_large_number(x):
