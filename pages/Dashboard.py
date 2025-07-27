@@ -64,11 +64,13 @@ columns_to_exclude = ['yr_built', 'yr_renovated', 'view', 'condition']
 filtered_numeric_df = filtered_df.drop(columns=columns_to_exclude, errors='ignore')
 detailed_summary = stats.detailed(filtered_numeric_df)
 
-# Function to format large numbers
+# Function to format large numbers with B, M, K
 def format_large_number(x):
     try:
         x = float(x)
-        if x >= 1_000_000:
+        if x >= 1_000_000_000:
+            return f"{x / 1_000_000_000:.1f}B"
+        elif x >= 1_000_000:
             return f"{x / 1_000_000:.1f}M"
         elif x >= 1_000:
             return f"{x / 1_000:.1f}K"
